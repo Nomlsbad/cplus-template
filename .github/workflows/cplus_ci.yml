@@ -28,6 +28,7 @@ jobs:
 
       - name: Build Project
         run: |
+          ${{ matrix.compiler }} --version
           cmake --build build
 
       - name: Test Project
