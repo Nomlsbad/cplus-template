@@ -11,12 +11,18 @@ jobs:
       fail-fast: false
       matrix:
         build_type: [ Release ]
-        compiler: [ { c: gcc, cxx: g++ }, { c: clang, cxx: clang++ }]
+        compiler: [ { c: gcc, cxx: g++ }, { c: clang-15, cxx: clang++-15 }]
 
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
+
+      - name: Install dependencies
+        run : |
+          sudo apt-get update
+          sudo apt-get upgrade
+          sudo apt install clang-15
 
       - name: Configure Project
         uses: threeal/cmake-action@v1.3.0
