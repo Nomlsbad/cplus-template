@@ -21,7 +21,6 @@ jobs:
 
       - name: Build Project
         run: |
-          g++ --version
           cmake --build build
 
       - name: Test Project
