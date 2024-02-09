@@ -10,25 +10,25 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        build_type: [Release]
-        compiler: [g++, clang++]
-      
+        build_type: [ Release ]
+        compiler: [ { c: gcc, cxx: g++ }, { c: clang, cxx: clang++ }]
+
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.1
-      
+
       - name: Configure Project
         uses: threeal/cmake-action@v1.3.0
         with:
           generator: Ninja
-          cxx-compiler: ${{ matrix.compiler }}
+          cxx-compiler: ${{ matrix.compiler.cxx }}
           options:
             CMAKE_BUILD_TYPE=${{ matrix.build_type }}
 
       - name: Build Project
         run: |
-          ${{ matrix.compiler }} --version
+          ${{ matrix.compiler.cxx }} --version
           cmake --build build
 
       - name: Test Project
