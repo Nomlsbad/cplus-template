@@ -7,6 +7,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: [Release]
+        compiler: [g++, clang]
+      
 
     steps:
       - name: Checkout
@@ -16,10 +22,9 @@ jobs:
         uses: threeal/cmake-action@v1.3.0
         with:
           generator: Ninja
-          c-compiler: gcc
-          cxx-compiler: g++
+          cxx-compiler: ${{ matrix.compiler }}
           options:
-            CMAKE_BUILD_TYPE=Debug
+            CMAKE_BUILD_TYPE=${{ matrix.build_type }}
 
       - name: Build Project
         run: |
