@@ -1,8 +1,8 @@
 name: C++ CI
 
 on:
-  push:
-    branches: [ "ci" ]
+  pull_request:
+    branches: [ "main", "dev" ]
 
 jobs:
   build:
@@ -18,11 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: Install dependencies
+      - name: Update clang
+        if: matrix.compiler.c == 'clang-15'
         run : |
-          sudo apt-get update
-          sudo apt-get upgrade
-          sudo apt install clang-15
+          sudo apt update
+          sudo apt install clang-15 -y
 
       - name: Configure Project
         uses: threeal/cmake-action@v1.3.0
