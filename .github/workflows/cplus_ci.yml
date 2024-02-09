@@ -18,6 +18,8 @@ jobs:
           generator: Ninja
           c-compiler: gcc
           cxx-compiler: g++
+          options:
+            "CMAKE_BUILD_TYPE=Release"
 
       - name: Build Project
         run: |
