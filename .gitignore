@@ -31,8 +31,9 @@
 *.out
 *.app
 
-# CMake
-cmake-build-*/
+# CMake buils files
+*build*
 
 # IDE files
-.idea
+.idea/*
+!.idea/cmake.xml
