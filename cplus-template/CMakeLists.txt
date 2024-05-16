@@ -1,5 +1,5 @@
 #App
-set(APP_NAME cplus_template)
+set(APP_NAME cplus-template)
 
 set(APP_PATH "${CMAKE_CURRENT_LIST_DIR}/app")
 set(APP_SRC_PATH "${APP_PATH}/src")
@@ -13,12 +13,12 @@ message(STATUS ${APP_SOURCES})
 add_subdirectory(app)
 
 #Tests
-set(TEST_NAME ${APP_NAME}_tests)
+set(TESTS_NAME ${APP_NAME}-unit-tests)
 
-set(TEST_PATH "${CMAKE_CURRENT_LIST_DIR}/tests")
-set(TEST_SRC_PATH ${TEST_PATH})
+set(TESTS_PATH "${CMAKE_CURRENT_LIST_DIR}/tests")
+set(TESTS_SRC_PATH ${TESTS_PATH})
 
-file(GLOB_RECURSE TEST_SOURCES "${TEST_SRC_PATH}/*.cpp")
-message(STATUS ${TEST_SOURCES})
+file(GLOB_RECURSE TESTS_SOURCES "${TESTS_SRC_PATH}/*.cpp")
+message(STATUS ${TESTS_SOURCES})
 
 add_subdirectory(tests)

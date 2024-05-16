@@ -1,11 +1,11 @@
-add_executable(${TEST_NAME} ${TEST_SOURCES})
+add_executable(${TESTS_NAME} ${TESTS_SOURCES})
 
-target_include_directories(${TEST_NAME}
+target_include_directories(${TESTS_NAME}
         PUBLIC
         ${APP_INCLUDE_PATH}
 )
 
-target_link_libraries(${TEST_NAME}
+target_link_libraries(${TESTS_NAME}
         PRIVATE
         GTest::gtest
         GTest::gtest_main
@@ -13,9 +13,9 @@ target_link_libraries(${TEST_NAME}
 )
 
 include(GoogleTest)
-gtest_discover_tests(${TEST_NAME})
+gtest_discover_tests(${TESTS_NAME})
 
-add_test(NAME ${TEST_NAME}
+add_test(NAME ${TESTS_NAME}
         WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-        COMMAND ${TEST_NAME}
+        COMMAND ${TESTS_NAME}
 )
