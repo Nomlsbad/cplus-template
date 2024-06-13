@@ -13,10 +13,6 @@ set_target_properties(${TARGET_NAME}
 target_sources(${TARGET_NAME} INTERFACE ${TARGET_SOURCES} PUBLIC ${TARGET_HEADERS})
 target_include_directories(${TARGET_NAME} PUBLIC ${TARGET_SRC_PATH})
 
-target_link_libraries(${TARGET_NAME}
-        PUBLIC
-)
-
 target_compile_options(${TARGET_NAME}
         PRIVATE
         -DPROJECT_DIR="${TARGET_PATH}"

@@ -4,6 +4,7 @@ project(cpp_template LANGUAGES CXX)
 
 include(cmake/CompileOptions.cmake)
 include(cmake/Sanitize.cmake)
+include(cmake/Targets.cmake)
 include(cmake/Testing.cmake)
 
 add_subdirectory(libs)

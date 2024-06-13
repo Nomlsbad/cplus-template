@@ -1,5 +1,5 @@
 set(TEST_NAME "example-test")
-set(TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/ExampleTest.cpp")
+file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "*.cpp")
 
 add_executable(${TEST_NAME}
         ${TEST_SOURCES}
@@ -12,7 +12,6 @@ target_include_directories(${TEST_NAME}
 
 target_link_libraries(${TEST_NAME}
         PRIVATE
-        GTest::gtest
         GTest::gtest_main
         ${TARGET_NAME}
 )
