@@ -17,8 +17,4 @@ target_link_libraries(${TEST_NAME}
         ${TARGET_NAME}
 )
 
-gtest_discover_tests(${TEST_NAME})
-add_test(NAME ${TEST_NAME}
-        WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-        COMMAND ${TEST_NAME}
-)
+gtest_discover_tests(${TEST_NAME} EXTRA_ARGS "--gtest_color=yes")

@@ -2,6 +2,7 @@ add_executable(${TARGET_NAME}
         ${TARGET_MAIN}
         ${TARGET_SOURCES}
 )
+
 set_target_properties(${TARGET_NAME}
         PROPERTIES
         ENABLE_EXPORTS 1
