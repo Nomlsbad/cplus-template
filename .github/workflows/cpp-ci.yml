@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         build_type: [ Release ]
-        compiler: [ { c: gcc, cxx: g++ }, { c: clang-15, cxx: clang++-15 }]
+        compiler: [ { c: gcc, cxx: g++ }, { c: clang-17, cxx: clang++-17 }]
 
     steps:
       - name: Checkout
@@ -23,7 +23,7 @@ jobs:
         if: matrix.compiler.c == 'clang-15'
         run : |
           sudo apt update
-          sudo apt install clang-15 -y
+          sudo apt install clang-17 -y
 
       - name: Configure Project
         uses: threeal/cmake-action@v1.3.0
