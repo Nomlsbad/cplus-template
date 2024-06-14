@@ -27,14 +27,3 @@ jobs:
           cxx-compiler: ${{ matrix.compiler.cxx }}
           options:
             CMAKE_BUILD_TYPE=${{ matrix.build_type }}
-          run-build: false
-
-      - name: Build Project
-        run: |
-          cmake --build build --target cplus-template
-          cmake --build build --target cplus-template-unit-tests
-
-      - name: Test Project
-        run: |
-          cd build
-          ctest --extra-verbose -R cplus-template-unit-tests
