@@ -27,8 +27,10 @@ jobs:
           cxx-compiler: ${{ matrix.compiler.cxx }}
           options:
             CMAKE_BUILD_TYPE=${{ matrix.build_type }}
-          run-build: true
-          build-args: "--target all"
+
+      - name: Build Targets
+        run: |
+          cmake --build build --target all -j 3
 
       - name: Run Tests
         run: |
