@@ -19,12 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
 
-      - name: Update clang
-        if: matrix.compiler.c == 'clang'
-        run : |
-          gcc -v
-          clang -v
-
       - name: Configure Project
         uses: threeal/cmake-action@v1.3.0
         with:
