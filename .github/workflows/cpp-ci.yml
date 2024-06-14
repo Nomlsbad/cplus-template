@@ -27,3 +27,8 @@ jobs:
           cxx-compiler: ${{ matrix.compiler.cxx }}
           options:
             CMAKE_BUILD_TYPE=${{ matrix.build_type }}
+
+      - name: Run Tests
+        run: |
+          cd build
+          ctest --extra-verbose
