@@ -1,0 +1,38 @@
+name: C++ CI
+
+on:
+  pull_request:
+    branches: [ "main", "dev", "ci" ]
+  push:
+    branches: ["ci"]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: [ Release ]
+        compiler: [ { c: gcc, cxx: g++ }, { c: clang, cxx: clang++ }]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Configure Project
+        uses: threeal/cmake-action@v1.3.0
+        with:
+          generator: Ninja
+          c-compiler: ${{ matrix.compiler.c }}
+          cxx-compiler: ${{ matrix.compiler.cxx }}
+          options:
+            CMAKE_BUILD_TYPE=${{ matrix.build_type }}
+
+      - name: Build Targets
+        run: |
+          cmake --build build --target all -j 3
+
+      - name: Run Tests
+        run: |
+          cd build
+          ctest --extra-verbose
